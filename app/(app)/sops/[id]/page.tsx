@@ -188,7 +188,7 @@ export default function SopDetailPage() {
 
   if (loading) {
     return (
-      <div className="flex flex-col h-full px-4 md:px-4 md:px-8 py-3 md:py-4 md:py-8 gap-6">
+      <div className="flex flex-col h-full px-4 md:px-8 py-4 md:py-8 gap-6">
         <div className="h-8 w-48 rounded-lg animate-pulse" style={{ background: "var(--color-card)" }} />
         <div className="h-12 w-96 rounded-xl animate-pulse" style={{ background: "var(--color-card)" }} />
         <div className="h-64 rounded-xl animate-pulse" style={{ background: "var(--color-card)" }} />
