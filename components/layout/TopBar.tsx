@@ -17,6 +17,7 @@ const ROUTE_TITLES: Record<string, string> = {
   "/sops":       "SOPs",
   "/tasks":      "Taken",
   "/meetings":   "Vergaderingen",
+  "/analyse":    "Analyse & Inzichten",
   "/settings":   "Instellingen",
 };
 
@@ -26,7 +27,7 @@ function resolveTitle(pathname: string): string {
   const match = Object.keys(ROUTE_TITLES)
     .filter((k) => k !== "/" && pathname.startsWith(k))
     .sort((a, b) => b.length - a.length)[0];
-  return match ? ROUTE_TITLES[match] : "Nucleus";
+  return match ? ROUTE_TITLES[match] : "CRM Tool";
 }
 
 function IconButton({

@@ -18,6 +18,7 @@ import {
   Settings,
   ChevronLeft,
   ChevronRight,
+  BarChart2,
 } from "lucide-react";
 
 interface NavItem {
@@ -37,6 +38,7 @@ const NAV_ITEMS: NavItem[] = [
   { label: "SOPs",         href: "/sops",       icon: BookOpen },
   { label: "Taken",        href: "/tasks",      icon: CheckSquare },
   { label: "Vergaderingen",href: "/meetings",   icon: Calendar },
+  { label: "Analyse",       href: "/analyse",    icon: BarChart2 },
   { label: "Instellingen", href: "/settings",   icon: Settings },
 ];
 
