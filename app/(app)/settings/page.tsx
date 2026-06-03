@@ -578,8 +578,7 @@ export default function SettingsPage() {
             </Row>
           ))}
 
-          {teamMembers.length < 2 && (
-            <div className="px-5 py-4 space-y-3">
+          <div className="px-5 py-4 space-y-3">
               <p className="text-xs" style={{ color: "var(--color-text-tertiary)" }}>
                 Nodig een teamgenoot uit door een invite-link te genereren. De link is 7 dagen geldig en eenmalig bruikbaar.
               </p>
@@ -636,8 +635,7 @@ export default function SettingsPage() {
                   </button>
                 </motion.div>
               )}
-            </div>
-          )}
+          </div>
         </Section>
 
         {/* Security */}
