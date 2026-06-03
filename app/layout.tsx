@@ -10,7 +10,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Nucleus",
+  title: "CRM Tool - Tygo Ian",
   description: "E-commerce Operating System",
 };
 

@@ -87,7 +87,7 @@ export default function LoginPage() {
               lineHeight: 1,
             }}
           >
-            Nucleus
+            CRM Tool
           </span>
         </div>
 

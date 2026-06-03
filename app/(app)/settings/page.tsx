@@ -10,7 +10,7 @@ import { useRouter } from "next/navigation";
 // ─── Settings Page ────────────────────────────────────────────────────────────
 
 const APP_VERSION = "1.0.0";
-const APP_NAME = "Nucleus";
+const APP_NAME = "CRM Tool - Tygo Ian";
 
 function SectionCard({ children, title }: { children: React.ReactNode; title: string }) {
   return (
@@ -98,7 +98,7 @@ export default function SettingsPage() {
             Instellingen
           </h1>
           <p className="mt-0.5 text-sm" style={{ color: "var(--color-text-tertiary)" }}>
-            Nucleus configuratie
+            CRM Tool - Tygo Ian configuratie
           </p>
         </div>
       </div>
@@ -186,7 +186,7 @@ export default function SettingsPage() {
         </SectionCard>
 
         {/* App info */}
-        <SectionCard title="Over Nucleus">
+        <SectionCard title="Over CRM Tool - Tygo Ian">
           <SettingsRow label="App naam" value={APP_NAME} />
           <SettingsRow label="Versie" value={`v${APP_VERSION}`} />
           <SettingsRow label="Omschrijving">

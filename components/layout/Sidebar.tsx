@@ -119,7 +119,7 @@ export function Sidebar() {
                   overflow: "hidden",
                 }}
               >
-                Nucleus
+                CRM Tool
               </motion.span>
             )}
           </AnimatePresence>
