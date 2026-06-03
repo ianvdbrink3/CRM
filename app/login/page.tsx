@@ -1,12 +1,12 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, Suspense } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { motion } from "framer-motion";
 import { Eye, EyeOff, Mail, Lock } from "lucide-react";
 import Link from "next/link";
 
-export default function LoginPage() {
+function LoginForm() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const [email, setEmail] = useState("");
@@ -286,5 +286,17 @@ export default function LoginPage() {
         </form>
       </motion.div>
     </div>
+  );
+}
+
+export default function LoginPage() {
+  return (
+    <Suspense fallback={
+      <div className="min-h-screen flex items-center justify-center" style={{ background: "#0A0A0B" }}>
+        <div className="w-6 h-6 rounded-full border-2 border-[#5B6CFF] border-t-transparent animate-spin" />
+      </div>
+    }>
+      <LoginForm />
+    </Suspense>
   );
 }

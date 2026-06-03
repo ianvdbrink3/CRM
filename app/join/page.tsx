@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, Suspense } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { motion } from "framer-motion";
 import { Eye, EyeOff, User, Lock, CheckCircle, AlertCircle } from "lucide-react";
@@ -12,7 +12,7 @@ interface InviteInfo {
   role?: string;
 }
 
-export default function JoinPage() {
+function JoinForm() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const token = searchParams.get("token") ?? "";
@@ -269,5 +269,17 @@ export default function JoinPage() {
         </form>
       </motion.div>
     </div>
+  );
+}
+
+export default function JoinPage() {
+  return (
+    <Suspense fallback={
+      <div className="min-h-screen flex items-center justify-center" style={{ background: "#0A0A0B" }}>
+        <div className="w-6 h-6 rounded-full border-2 border-[#5B6CFF] border-t-transparent animate-spin" />
+      </div>
+    }>
+      <JoinForm />
+    </Suspense>
   );
 }
