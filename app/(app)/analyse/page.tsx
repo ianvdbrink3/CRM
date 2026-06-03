@@ -452,9 +452,9 @@ function SummaryBar({ insights }: { insights: Insight[] }) {
   return (
     <div className="grid grid-cols-3 gap-3">
       {[
-        { label: "Direct aandacht", count: critical, ...PRIORITY_CONFIG.critical },
-        { label: "In de gaten houden", count: warning, ...PRIORITY_CONFIG.warning },
-        { label: "Presteert goed", count: good, ...PRIORITY_CONFIG.good },
+        { count: critical, ...PRIORITY_CONFIG.critical },
+        { count: warning, ...PRIORITY_CONFIG.warning },
+        { count: good, ...PRIORITY_CONFIG.good },
       ].map((item) => (
         <div
           key={item.label}
