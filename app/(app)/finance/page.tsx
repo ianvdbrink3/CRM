@@ -2188,7 +2188,7 @@ export default function FinancePage() {
 
       {/* ── Tab bar ── */}
       <div
-        className="flex items-center gap-1 px-4 md:px-8 pt-3 md:pt-4 flex-shrink-0"
+        className="flex items-center gap-1 px-4 md:px-8 pt-3 md:pt-4 flex-shrink-0 overflow-x-auto"
         style={{ borderBottom: "1px solid var(--color-border)" }}
       >
         {TABS.map((tab) => {

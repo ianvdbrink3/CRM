@@ -539,7 +539,7 @@ export default function SuppliersPage() {
 
       {/* Filters */}
       <div
-        className="flex items-center gap-2 px-8 py-3 flex-shrink-0 flex-wrap"
+        className="flex items-center gap-2 px-4 md:px-8 py-3 flex-shrink-0 flex-wrap overflow-x-auto"
         style={{ borderBottom: "1px solid var(--color-border)" }}
       >
         <span className="text-xs font-semibold uppercase tracking-wide mr-1" style={{ color: "var(--color-text-tertiary)" }}>Status</span>
@@ -571,8 +571,8 @@ export default function SuppliersPage() {
             </button>
           </div>
         ) : (
-          <div className="rounded-[16px] overflow-hidden border" style={{ borderColor: "var(--color-border)" }}>
-            <table className="w-full text-sm border-collapse">
+          <div className="rounded-[16px] overflow-x-auto border" style={{ borderColor: "var(--color-border)" }}>
+            <table className="w-full min-w-[800px] text-sm border-collapse">
               <thead>
                 <tr style={{ background: "var(--color-surface)", borderBottom: "1px solid var(--color-border)" }}>
                   {["Naam", "Land", "Tier / Score", "Kwaliteit", "Betrouwbaarheid", "Levertijd", "MOQ", "Status", "Contactpersoon", "Contact", "Notities"].map((h) => (

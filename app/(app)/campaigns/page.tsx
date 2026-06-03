@@ -1296,7 +1296,7 @@ export default function CampaignsPage() {
 
       {/* ── Filters ── */}
       <div
-        className="flex items-center gap-6 px-8 py-3 flex-shrink-0 flex-wrap"
+        className="flex items-center gap-3 px-4 md:px-8 py-3 flex-shrink-0 flex-wrap overflow-x-auto"
         style={{ borderBottom: "1px solid var(--color-border)" }}
       >
         {/* Platform filter */}
