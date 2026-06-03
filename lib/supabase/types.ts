@@ -680,7 +680,15 @@ export type Database = {
           edited_at: string | null
           deleted_at: string | null
         }>
-        Relationships: []
+        Relationships: [
+          {
+            foreignKeyName: "chat_messages_sender_profile_fkey"
+            columns: ["sender_id"]
+            isOneToOne: false
+            referencedRelation: "user_profiles"
+            referencedColumns: ["id"]
+          }
+        ]
       }
 
       // ------------------------------------------------------------------ //
@@ -701,7 +709,15 @@ export type Database = {
           last_read_at: string
           updated_at: string
         }>
-        Relationships: []
+        Relationships: [
+          {
+            foreignKeyName: "chat_read_status_user_profile_fkey"
+            columns: ["user_id"]
+            isOneToOne: true
+            referencedRelation: "user_profiles"
+            referencedColumns: ["id"]
+          }
+        ]
       }
 
       // ------------------------------------------------------------------ //
