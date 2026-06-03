@@ -668,7 +668,7 @@ export default function ProductDetailPage() {
 
   if (loading) {
     return (
-      <div className="px-8 py-6 max-w-[900px] mx-auto space-y-4">
+      <div className="px-4 md:px-8 py-4 md:py-6 max-w-[900px] mx-auto space-y-4">
         {[240, 320, 200].map((h, i) => (
           <div
             key={i}
@@ -686,7 +686,7 @@ export default function ProductDetailPage() {
 
   if (!product) {
     return (
-      <div className="px-8 py-6 flex flex-col items-center justify-center gap-4 h-full">
+      <div className="px-4 md:px-8 py-4 md:py-6 flex flex-col items-center justify-center gap-4 h-full">
         <Package size={40} style={{ color: "var(--color-text-tertiary)" }} />
         <p style={{ color: "var(--color-text-secondary)" }}>
           Product niet gevonden.
@@ -727,7 +727,7 @@ export default function ProductDetailPage() {
       initial={{ opacity: 0, y: 8 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.25, ease: [0.25, 0.1, 0.25, 1] }}
-      className="px-8 py-6 max-w-[900px] mx-auto space-y-5 pb-12"
+      className="px-4 md:px-8 py-4 md:py-6 max-w-[900px] mx-auto space-y-5 pb-12"
     >
       {/* ═══════════════════════════════════════════════════════════ */}
       {/* 1. HEADER                                                   */}

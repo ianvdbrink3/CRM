@@ -28,8 +28,10 @@ export async function getCurrentProfile(): Promise<UserProfile | null> {
 
 export async function getTotalUserCount(): Promise<number> {
   const admin = createAdminClient();
-  const { data } = await admin.auth.admin.listUsers();
-  return data?.users?.length ?? 0;
+  const { count } = await admin
+    .from("user_profiles")
+    .select("id", { count: "exact", head: true });
+  return count ?? 0;
 }
 
 export async function createUserWithProfile(opts: {
