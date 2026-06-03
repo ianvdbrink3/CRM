@@ -581,42 +581,6 @@ export type Database = {
           created_at?: string
         }
       }
-    }
-
-    Views: {
-      // ------------------------------------------------------------------ //
-      // nucleus_product_rollups
-      // ------------------------------------------------------------------ //
-      nucleus_product_rollups: {
-        Row: {
-          id: string | null
-          name: string | null
-          status: string | null
-          winning_score: number | null
-          margin_pct: number | null
-          total_ad_spend: number | null
-          total_revenue: number | null
-          product_roas: number | null
-          campaign_count: number | null
-          creative_count: number | null
-          insight_count: number | null
-        }
-      }
-
-      // ------------------------------------------------------------------ //
-      // nucleus_finance_summary
-      // ------------------------------------------------------------------ //
-      nucleus_finance_summary: {
-        Row: {
-          total_revenue: number | null
-          total_net_profit: number | null
-          total_ad_spend: number | null
-          overall_mer: number | null
-          avg_break_even_roas: number | null
-          cash_position: number | null
-        }
-      }
-    }
 
       // ------------------------------------------------------------------ //
       // user_profiles
@@ -652,6 +616,7 @@ export type Database = {
           online_at: string | null
           updated_at: string
         }>
+        Relationships: []
       }
 
       // ------------------------------------------------------------------ //
@@ -687,6 +652,7 @@ export type Database = {
           used_at: string | null
           used_by: string | null
         }>
+        Relationships: []
       }
 
       // ------------------------------------------------------------------ //
@@ -714,6 +680,7 @@ export type Database = {
           edited_at: string | null
           deleted_at: string | null
         }>
+        Relationships: []
       }
 
       // ------------------------------------------------------------------ //
@@ -734,6 +701,7 @@ export type Database = {
           last_read_at: string
           updated_at: string
         }>
+        Relationships: []
       }
 
       // ------------------------------------------------------------------ //
@@ -772,6 +740,7 @@ export type Database = {
           error_message: string | null
           updated_at: string
         }>
+        Relationships: []
       }
 
       // ------------------------------------------------------------------ //
@@ -799,13 +768,51 @@ export type Database = {
           created_at?: string
         }
         Update: never
+        Relationships: []
       }
+    }
+
+    Views: {
+      // ------------------------------------------------------------------ //
+      // nucleus_product_rollups
+      // ------------------------------------------------------------------ //
+      nucleus_product_rollups: {
+        Row: {
+          id: string | null
+          name: string | null
+          status: string | null
+          winning_score: number | null
+          margin_pct: number | null
+          total_ad_spend: number | null
+          total_revenue: number | null
+          product_roas: number | null
+          campaign_count: number | null
+          creative_count: number | null
+          insight_count: number | null
+        }
+      }
+
+      // ------------------------------------------------------------------ //
+      // nucleus_finance_summary
+      // ------------------------------------------------------------------ //
+      nucleus_finance_summary: {
+        Row: {
+          total_revenue: number | null
+          total_net_profit: number | null
+          total_ad_spend: number | null
+          overall_mer: number | null
+          avg_break_even_roas: number | null
+          cash_position: number | null
+        }
+      }
+    }
 
     Functions: Record<string, never>
     Enums: Record<string, never>
     CompositeTypes: Record<string, never>
   }
 }
+
 
 // ------------------------------------------------------------------ //
 // Convenience row-type aliases

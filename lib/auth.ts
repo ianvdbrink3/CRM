@@ -69,7 +69,7 @@ export async function createUserWithProfile(opts: {
       initials,
       role: opts.role,
       avatar_color: avatarColor,
-    });
+    } as never);
 
   if (profileError) {
     // Rollback: delete the auth user
