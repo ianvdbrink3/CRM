@@ -18,6 +18,7 @@ const ROUTE_TITLES: Record<string, string> = {
   "/tasks":      "Taken",
   "/meetings":   "Vergaderingen",
   "/analyse":    "Analyse & Inzichten",
+  "/chat":       "Team Chat",
   "/settings":   "Instellingen",
 };
 

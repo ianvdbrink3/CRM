@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { motion, AnimatePresence, type Variants } from "framer-motion";
@@ -19,27 +19,31 @@ import {
   ChevronLeft,
   ChevronRight,
   BarChart2,
+  MessageSquare,
 } from "lucide-react";
+import { createClient } from "@/lib/supabase/client";
 
 interface NavItem {
   label: string;
   href: string;
   icon: React.ElementType;
+  badge?: number;
 }
 
-const NAV_ITEMS: NavItem[] = [
-  { label: "Dashboard",    href: "/",           icon: LayoutDashboard },
-  { label: "Producten",    href: "/products",   icon: Package },
-  { label: "Campagnes",    href: "/campaigns",  icon: Megaphone },
-  { label: "Creatives",    href: "/creatives",  icon: Film },
-  { label: "Inzichten",    href: "/insights",   icon: Lightbulb },
-  { label: "Leveranciers", href: "/suppliers",  icon: Truck },
-  { label: "Financiën",    href: "/finance",    icon: TrendingUp },
-  { label: "SOPs",         href: "/sops",       icon: BookOpen },
-  { label: "Taken",        href: "/tasks",      icon: CheckSquare },
-  { label: "Vergaderingen",href: "/meetings",   icon: Calendar },
+const BASE_NAV_ITEMS: Omit<NavItem, "badge">[] = [
+  { label: "Dashboard",     href: "/",           icon: LayoutDashboard },
+  { label: "Producten",     href: "/products",   icon: Package },
+  { label: "Campagnes",     href: "/campaigns",  icon: Megaphone },
+  { label: "Creatives",     href: "/creatives",  icon: Film },
+  { label: "Inzichten",     href: "/insights",   icon: Lightbulb },
+  { label: "Leveranciers",  href: "/suppliers",  icon: Truck },
+  { label: "Financiën",     href: "/finance",    icon: TrendingUp },
+  { label: "SOPs",          href: "/sops",       icon: BookOpen },
+  { label: "Taken",         href: "/tasks",      icon: CheckSquare },
+  { label: "Vergaderingen", href: "/meetings",   icon: Calendar },
   { label: "Analyse",       href: "/analyse",    icon: BarChart2 },
-  { label: "Instellingen", href: "/settings",   icon: Settings },
+  { label: "Chat",          href: "/chat",       icon: MessageSquare },
+  { label: "Instellingen",  href: "/settings",   icon: Settings },
 ];
 
 const STORAGE_KEY = "nucleus-sidebar-collapsed";
@@ -67,8 +71,53 @@ const itemVariants: Variants = {
 
 export function Sidebar() {
   const pathname = usePathname();
+  const supabase = createClient();
   const [collapsed, setCollapsed] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [unreadChat, setUnreadChat] = useState(0);
+
+  const loadUnread = useCallback(async () => {
+    const { data: { user } } = await supabase.auth.getUser();
+    if (!user) return;
+
+    const { data: status } = await supabase
+      .from("chat_read_status")
+      .select("last_read_at")
+      .eq("user_id", user.id)
+      .single();
+
+    const since = (status as { last_read_at?: string } | null)?.last_read_at ?? "1970-01-01";
+
+    const { count } = await supabase
+      .from("chat_messages")
+      .select("id", { count: "exact", head: true })
+      .gt("created_at", since)
+      .neq("sender_id", user.id)
+      .is("deleted_at", null);
+
+    setUnreadChat(count ?? 0);
+  }, [supabase]);
+
+  useEffect(() => {
+    loadUnread();
+
+    const channel = supabase
+      .channel("sidebar-chat-badge")
+      .on("postgres_changes", { event: "INSERT", schema: "public", table: "chat_messages" }, () => {
+        if (pathname !== "/chat") loadUnread();
+      })
+      .subscribe();
+
+    return () => { supabase.removeChannel(channel); };
+  }, [loadUnread, pathname, supabase]);
+
+  useEffect(() => {
+    if (pathname === "/chat") setUnreadChat(0);
+  }, [pathname]);
+
+  const navItems: NavItem[] = BASE_NAV_ITEMS.map((item) =>
+    item.href === "/chat" ? { ...item, badge: unreadChat > 0 ? unreadChat : undefined } : item
+  );
 
   // Persist collapsed state
   useEffect(() => {
@@ -147,7 +196,7 @@ export function Sidebar() {
       {/* Nav items */}
       <nav className="flex-1 overflow-y-auto overflow-x-hidden px-2 py-3">
         <ul className="flex flex-col gap-0.5">
-          {NAV_ITEMS.map((item) => {
+          {navItems.map((item) => {
             const active = isActive(item.href);
             const Icon = item.icon;
             return (
@@ -183,7 +232,17 @@ export function Sidebar() {
                       style={{ width: 3, height: 20, background: "#5B6CFF" }}
                     />
                   )}
-                  <Icon size={16} className="flex-shrink-0" />
+                  <div className="relative flex-shrink-0">
+                    <Icon size={16} />
+                    {item.badge !== undefined && collapsed && (
+                      <span
+                        className="absolute -top-1 -right-1 flex items-center justify-center rounded-full text-white font-bold"
+                        style={{ width: 14, height: 14, background: "#FF453A", fontSize: 9 }}
+                      >
+                        {item.badge > 9 ? "9+" : item.badge}
+                      </span>
+                    )}
+                  </div>
                   <AnimatePresence>
                     {!collapsed && (
                       <motion.span
@@ -192,9 +251,18 @@ export function Sidebar() {
                         animate={{ opacity: 1, width: "auto" }}
                         exit={{ opacity: 0, width: 0 }}
                         transition={{ duration: 0.15 }}
+                        className="flex items-center gap-2 flex-1 min-w-0"
                         style={{ whiteSpace: "nowrap", overflow: "hidden" }}
                       >
-                        {item.label}
+                        <span>{item.label}</span>
+                        {item.badge !== undefined && (
+                          <span
+                            className="ml-auto flex items-center justify-center rounded-full text-white font-bold flex-shrink-0"
+                            style={{ minWidth: 18, height: 18, background: "#FF453A", fontSize: 10, padding: "0 4px" }}
+                          >
+                            {item.badge > 99 ? "99+" : item.badge}
+                          </span>
+                        )}
                       </motion.span>
                     )}
                   </AnimatePresence>

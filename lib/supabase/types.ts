@@ -618,6 +618,189 @@ export type Database = {
       }
     }
 
+      // ------------------------------------------------------------------ //
+      // user_profiles
+      // ------------------------------------------------------------------ //
+      user_profiles: {
+        Row: {
+          id: string
+          email: string
+          display_name: string
+          initials: string
+          role: 'owner' | 'admin' | 'employee'
+          avatar_color: string
+          online_at: string | null
+          created_at: string
+          updated_at: string
+        }
+        Insert: {
+          id: string
+          email: string
+          display_name: string
+          initials: string
+          role?: 'owner' | 'admin' | 'employee'
+          avatar_color?: string
+          online_at?: string | null
+          created_at?: string
+          updated_at?: string
+        }
+        Update: Partial<{
+          display_name: string
+          initials: string
+          role: 'owner' | 'admin' | 'employee'
+          avatar_color: string
+          online_at: string | null
+          updated_at: string
+        }>
+      }
+
+      // ------------------------------------------------------------------ //
+      // invitations
+      // ------------------------------------------------------------------ //
+      invitations: {
+        Row: {
+          id: string
+          token: string
+          email: string | null
+          role: 'owner' | 'admin' | 'employee'
+          created_by: string | null
+          expires_at: string
+          used_at: string | null
+          used_by: string | null
+          created_at: string
+        }
+        Insert: {
+          id?: string
+          token?: string
+          email?: string | null
+          role?: 'owner' | 'admin' | 'employee'
+          created_by?: string | null
+          expires_at?: string
+          used_at?: string | null
+          used_by?: string | null
+          created_at?: string
+        }
+        Update: Partial<{
+          email: string | null
+          role: 'owner' | 'admin' | 'employee'
+          expires_at: string
+          used_at: string | null
+          used_by: string | null
+        }>
+      }
+
+      // ------------------------------------------------------------------ //
+      // chat_messages
+      // ------------------------------------------------------------------ //
+      chat_messages: {
+        Row: {
+          id: string
+          sender_id: string
+          content: string
+          created_at: string
+          edited_at: string | null
+          deleted_at: string | null
+        }
+        Insert: {
+          id?: string
+          sender_id: string
+          content: string
+          created_at?: string
+          edited_at?: string | null
+          deleted_at?: string | null
+        }
+        Update: Partial<{
+          content: string
+          edited_at: string | null
+          deleted_at: string | null
+        }>
+      }
+
+      // ------------------------------------------------------------------ //
+      // chat_read_status
+      // ------------------------------------------------------------------ //
+      chat_read_status: {
+        Row: {
+          user_id: string
+          last_read_at: string
+          updated_at: string
+        }
+        Insert: {
+          user_id: string
+          last_read_at?: string
+          updated_at?: string
+        }
+        Update: Partial<{
+          last_read_at: string
+          updated_at: string
+        }>
+      }
+
+      // ------------------------------------------------------------------ //
+      // integrations
+      // ------------------------------------------------------------------ //
+      integrations: {
+        Row: {
+          id: string
+          provider: string
+          encrypted_credentials: string | null
+          credential_fields: string[]
+          status: 'connected' | 'disconnected' | 'error'
+          tested_at: string | null
+          error_message: string | null
+          created_by: string | null
+          updated_at: string
+          created_at: string
+        }
+        Insert: {
+          id?: string
+          provider: string
+          encrypted_credentials?: string | null
+          credential_fields?: string[]
+          status?: 'connected' | 'disconnected' | 'error'
+          tested_at?: string | null
+          error_message?: string | null
+          created_by?: string | null
+          updated_at?: string
+          created_at?: string
+        }
+        Update: Partial<{
+          encrypted_credentials: string | null
+          credential_fields: string[]
+          status: 'connected' | 'disconnected' | 'error'
+          tested_at: string | null
+          error_message: string | null
+          updated_at: string
+        }>
+      }
+
+      // ------------------------------------------------------------------ //
+      // audit_logs
+      // ------------------------------------------------------------------ //
+      audit_logs: {
+        Row: {
+          id: string
+          user_id: string | null
+          action: string
+          resource_type: string | null
+          resource_id: string | null
+          metadata: Record<string, unknown> | null
+          ip_address: string | null
+          created_at: string
+        }
+        Insert: {
+          id?: string
+          user_id?: string | null
+          action: string
+          resource_type?: string | null
+          resource_id?: string | null
+          metadata?: Record<string, unknown> | null
+          ip_address?: string | null
+          created_at?: string
+        }
+        Update: never
+      }
+
     Functions: Record<string, never>
     Enums: Record<string, never>
     CompositeTypes: Record<string, never>
@@ -680,3 +863,22 @@ export type TaskUpdate   = Tables['nucleus_tasks']['Update']
 
 export type ProductRollup    = Views['nucleus_product_rollups']['Row']
 export type FinanceSummary   = Views['nucleus_finance_summary']['Row']
+
+export type UserProfile      = Tables['user_profiles']['Row']
+export type UserProfileInsert = Tables['user_profiles']['Insert']
+export type UserProfileUpdate = Tables['user_profiles']['Update']
+
+export type Invitation       = Tables['invitations']['Row']
+export type InvitationInsert = Tables['invitations']['Insert']
+
+export type ChatMessage      = Tables['chat_messages']['Row']
+export type ChatMessageInsert = Tables['chat_messages']['Insert']
+
+export type ChatReadStatus   = Tables['chat_read_status']['Row']
+
+export type Integration      = Tables['integrations']['Row']
+export type IntegrationInsert = Tables['integrations']['Insert']
+export type IntegrationUpdate = Tables['integrations']['Update']
+
+export type AuditLog         = Tables['audit_logs']['Row']
+export type AuditLogInsert   = Tables['audit_logs']['Insert']
