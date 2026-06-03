@@ -84,7 +84,7 @@ function LoginForm() {
           WebkitBackdropFilter: "blur(20px)",
           border: "1px solid rgba(255,255,255,0.08)",
           borderRadius: 20,
-          padding: "48px 40px",
+          padding: "clamp(24px, 6vw, 48px) clamp(20px, 5vw, 40px)",
           width: "100%",
           maxWidth: 400,
           boxShadow:
