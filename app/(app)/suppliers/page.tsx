@@ -516,7 +516,7 @@ export default function SuppliersPage() {
     <div className="flex flex-col h-full">
       {/* Header */}
       <div
-        className="flex items-center justify-between px-8 py-5 flex-shrink-0"
+        className="flex items-center justify-between px-4 md:px-8 py-4 md:py-5 flex-shrink-0"
         style={{ borderBottom: "1px solid var(--color-border)" }}
       >
         <div>
@@ -550,7 +550,7 @@ export default function SuppliersPage() {
       </div>
 
       {/* Table */}
-      <div className="flex-1 overflow-auto px-8 py-6">
+      <div className="flex-1 overflow-auto px-4 md:px-8 py-4 md:py-6">
         {loading ? (
           <div className="space-y-2">
             {[...Array(5)].map((_, i) => (

@@ -393,7 +393,7 @@ export default function InsightsPage() {
     <div className="flex flex-col h-full">
       {/* Header */}
       <div
-        className="flex items-center justify-between px-8 py-5 flex-shrink-0"
+        className="flex items-center justify-between px-4 md:px-8 py-4 md:py-5 flex-shrink-0"
         style={{ borderBottom: "1px solid var(--color-border)" }}
       >
         <div>
@@ -410,7 +410,7 @@ export default function InsightsPage() {
       </div>
 
       {/* Scrollable body */}
-      <div className="flex-1 overflow-y-auto px-8 py-6 space-y-5">
+      <div className="flex-1 overflow-y-auto px-4 md:px-8 py-4 md:py-6 space-y-5">
 
         {/* Quick add */}
         <QuickAddBar products={products} onAdded={fetchInsights} />

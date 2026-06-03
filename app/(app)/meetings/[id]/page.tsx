@@ -326,7 +326,7 @@ export default function MeetingDetailPage() {
 
   if (loading) {
     return (
-      <div className="flex flex-col h-full px-8 py-8 gap-6">
+      <div className="flex flex-col h-full px-4 md:px-4 md:px-8 py-3 md:py-4 md:py-8 gap-6">
         <div className="h-8 w-48 rounded-lg animate-pulse" style={{ background: "var(--color-card)" }} />
         <div className="h-12 w-96 rounded-xl animate-pulse" style={{ background: "var(--color-card)" }} />
         <div className="h-48 rounded-xl animate-pulse" style={{ background: "var(--color-card)" }} />
@@ -349,7 +349,7 @@ export default function MeetingDetailPage() {
     <div className="flex flex-col h-full overflow-y-auto">
       {/* Header */}
       <div
-        className="flex items-center gap-4 px-8 py-4 flex-shrink-0 sticky top-0 z-10"
+        className="flex items-center gap-4 px-4 md:px-8 py-3 md:py-4 flex-shrink-0 sticky top-0 z-10"
         style={{ background: "var(--color-bg)", borderBottom: "1px solid var(--color-border)" }}
       >
         <Link
@@ -365,7 +365,7 @@ export default function MeetingDetailPage() {
       </div>
 
       {/* Content */}
-      <div className="flex-1 px-8 py-6 max-w-4xl w-full mx-auto space-y-6">
+      <div className="flex-1 px-4 md:px-8 py-4 md:py-6 max-w-4xl w-full mx-auto space-y-6">
         {/* Title */}
         <motion.div initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.3 }}>
           <h1 className="text-[28px] font-bold leading-tight" style={{ color: "var(--color-text-primary)" }}>

@@ -767,7 +767,7 @@ export default function ProductsPage() {
     <div className="flex flex-col h-full">
       {/* ── Header ── */}
       <div
-        className="flex items-center justify-between px-8 py-5 flex-shrink-0"
+        className="flex items-center justify-between px-4 md:px-8 py-4 md:py-5 flex-shrink-0"
         style={{ borderBottom: "1px solid var(--color-border)" }}
       >
         <div>
@@ -850,7 +850,7 @@ export default function ProductsPage() {
       <div className="flex-1 overflow-hidden">
         {viewMode === "kanban" ? (
           /* ── Kanban board ── */
-          <div className="h-full overflow-x-auto overflow-y-hidden px-8 py-6">
+          <div className="h-full overflow-x-auto overflow-y-hidden px-4 md:px-8 py-4 md:py-6">
             {loading ? (
               <div className="flex gap-4 h-full">
                 {STATUSES.map((s) => (
@@ -883,7 +883,7 @@ export default function ProductsPage() {
           </div>
         ) : (
           /* ── Table view ── */
-          <div className="px-8 py-6 overflow-y-auto h-full">
+          <div className="px-4 md:px-8 py-4 md:py-6 overflow-y-auto h-full">
             {loading ? (
               <div
                 className="rounded-[16px] border h-48 animate-pulse"

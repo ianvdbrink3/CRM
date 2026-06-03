@@ -1639,7 +1639,7 @@ export default function CreativesPage() {
     <div className="flex flex-col h-full">
       {/* ── Header ── */}
       <div
-        className="flex items-center justify-between px-8 py-5 flex-shrink-0"
+        className="flex items-center justify-between px-4 md:px-8 py-4 md:py-5 flex-shrink-0"
         style={{ borderBottom: "1px solid var(--color-border)" }}
       >
         <div>
@@ -1684,7 +1684,7 @@ export default function CreativesPage() {
       {/* ── Board ── */}
       <div className="flex-1 overflow-hidden">
         {loading ? (
-          <div className="flex gap-4 h-full px-8 py-6 overflow-x-auto">
+          <div className="flex gap-4 h-full px-4 md:px-8 py-4 md:py-6 overflow-x-auto">
             {BOARD_STATUSES.map((s) => (
               <div
                 key={s}
@@ -1704,7 +1704,7 @@ export default function CreativesPage() {
             }}
           />
         ) : (
-          <div className="h-full overflow-x-auto overflow-y-hidden px-8 py-6">
+          <div className="h-full overflow-x-auto overflow-y-hidden px-4 md:px-8 py-4 md:py-6">
             <div className="flex gap-3 h-full items-start">
               {BOARD_STATUSES.map((status) => (
                 <BoardColumn

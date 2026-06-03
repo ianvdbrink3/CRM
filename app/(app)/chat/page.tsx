@@ -366,7 +366,7 @@ export default function ChatPage() {
         {/* Messages */}
         <div
           ref={containerRef}
-          className="flex-1 overflow-y-auto px-6 py-4 space-y-1"
+          className="flex-1 overflow-y-auto px-3 sm:px-6 py-4 space-y-1"
         >
           {loading ? (
             <div className="flex items-center justify-center h-full">
@@ -418,7 +418,7 @@ export default function ChatPage() {
 
         {/* Input */}
         <div
-          className="flex-shrink-0 px-6 py-4"
+          className="flex-shrink-0 px-3 sm:px-6 py-3"
           style={{ borderTop: "1px solid var(--color-border)" }}
         >
           <div
@@ -430,7 +430,7 @@ export default function ChatPage() {
               value={input}
               onChange={(e) => setInput(e.target.value)}
               onKeyDown={handleKeyDown}
-              placeholder="Stuur een bericht… (Enter om te sturen, Shift+Enter voor nieuwe regel)"
+              placeholder="Stuur een bericht…"
               rows={1}
               className="flex-1 resize-none outline-none text-sm leading-relaxed"
               style={{

@@ -502,7 +502,7 @@ export default function AnalysePage() {
     <div className="flex flex-col h-full">
       {/* Page header */}
       <div
-        className="flex items-center justify-between px-8 py-5 flex-shrink-0"
+        className="flex items-center justify-between px-4 md:px-8 py-4 md:py-5 flex-shrink-0"
         style={{ borderBottom: "1px solid var(--color-border)" }}
       >
         <div>
@@ -516,7 +516,7 @@ export default function AnalysePage() {
       </div>
 
       {/* Scrollable body */}
-      <div className="flex-1 overflow-y-auto px-8 py-6 space-y-8 max-w-4xl w-full">
+      <div className="flex-1 overflow-y-auto px-4 md:px-8 py-4 md:py-6 space-y-8 max-w-4xl w-full">
 
         {/* Status banner */}
         <StatusBanner

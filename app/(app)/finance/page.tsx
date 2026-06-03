@@ -2167,7 +2167,7 @@ export default function FinancePage() {
     <div className="flex flex-col h-full">
       {/* ── Page header ── */}
       <div
-        className="flex items-center justify-between px-8 py-5 flex-shrink-0"
+        className="flex items-center justify-between px-4 md:px-8 py-4 md:py-5 flex-shrink-0"
         style={{ borderBottom: "1px solid var(--color-border)" }}
       >
         <div>
@@ -2188,7 +2188,7 @@ export default function FinancePage() {
 
       {/* ── Tab bar ── */}
       <div
-        className="flex items-center gap-1 px-8 pt-4 flex-shrink-0"
+        className="flex items-center gap-1 px-4 md:px-8 pt-3 md:pt-4 flex-shrink-0"
         style={{ borderBottom: "1px solid var(--color-border)" }}
       >
         {TABS.map((tab) => {
@@ -2219,7 +2219,7 @@ export default function FinancePage() {
       </div>
 
       {/* ── Tab content ── */}
-      <div className="flex-1 overflow-y-auto px-8 py-6">
+      <div className="flex-1 overflow-y-auto px-4 md:px-8 py-4 md:py-6">
         <AnimatePresence mode="wait">
           <motion.div
             key={activeTab}

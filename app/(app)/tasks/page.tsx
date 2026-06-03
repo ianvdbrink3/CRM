@@ -621,7 +621,7 @@ export default function TasksPage() {
     <div className="flex flex-col h-full">
       {/* ── Header ── */}
       <div
-        className="flex items-center justify-between px-8 py-5 flex-shrink-0"
+        className="flex items-center justify-between px-4 md:px-8 py-4 md:py-5 flex-shrink-0"
         style={{ borderBottom: "1px solid var(--color-border)" }}
       >
         <div>
@@ -664,7 +664,7 @@ export default function TasksPage() {
       </div>
 
       {/* ── Board ── */}
-      <div className="flex-1 overflow-x-auto overflow-y-hidden px-8 py-6">
+      <div className="flex-1 overflow-x-auto overflow-y-hidden px-4 md:px-8 py-4 md:py-6">
         {/* Quick-add */}
         <QuickAddTask onSuccess={fetchTasks} />
 

@@ -291,7 +291,7 @@ export default function DashboardPage() {
   // ─── Render ────────────────────────────────────────────────────────────────
 
   return (
-    <div className="px-8 py-6 max-w-[1600px] mx-auto space-y-10">
+    <div className="px-4 md:px-8 py-4 md:py-6 max-w-[1600px] mx-auto space-y-6 md:space-y-10">
 
       {/* ── Page header ── */}
       <div>
@@ -385,7 +385,7 @@ export default function DashboardPage() {
             <SectionHeader title="Dagelijkse prioriteiten" />
 
             <div
-              className="rounded-[16px] border overflow-hidden"
+              className="rounded-[16px] border overflow-x-auto"
               style={{
                 background: "var(--color-card)",
                 borderColor: "var(--color-border)",
@@ -393,7 +393,7 @@ export default function DashboardPage() {
               }}
             >
               {tasksLoading ? (
-                <table className="w-full">
+                <table className="w-full min-w-[480px]">
                   <tbody>
                     {Array.from({ length: 4 }).map((_, i) => (
                       <SkeletonRow key={i} cells={4} widths={["w-12", "w-48", "w-16", "w-8"]} />
@@ -552,7 +552,7 @@ export default function DashboardPage() {
             <SectionHeader title="Producten in testing" href="/products" />
 
             <div
-              className="rounded-[16px] border overflow-hidden"
+              className="rounded-[16px] border overflow-x-auto"
               style={{
                 background: "var(--color-card)",
                 borderColor: "var(--color-border)",
@@ -560,7 +560,7 @@ export default function DashboardPage() {
               }}
             >
               {productsLoading ? (
-                <table className="w-full">
+                <table className="w-full min-w-[480px]">
                   <tbody>
                     {Array.from({ length: 4 }).map((_, i) => (
                       <SkeletonRow key={i} cells={4} widths={["w-40", "w-16", "w-16", "w-16"]} />
@@ -574,7 +574,7 @@ export default function DashboardPage() {
                   description="Voeg producten toe met status testing, scaling of winner."
                 />
               ) : (
-                <table className="w-full">
+                <table className="w-full min-w-[480px]">
                   <thead>
                     <tr style={{ borderBottom: "1px solid var(--color-border)" }}>
                       {["Product", "Score", "Status", "Marge", "ROAS"].map((h) => (
@@ -602,14 +602,14 @@ export default function DashboardPage() {
                           {product.id ? (
                             <Link
                               href={`/products/${product.id}`}
-                              className="text-sm font-medium hover:underline truncate block max-w-[160px]"
+                              className="text-sm font-medium hover:underline truncate block"
                               style={{ color: "var(--color-text-primary)" }}
                             >
                               {product.name ?? "—"}
                             </Link>
                           ) : (
                             <span
-                              className="text-sm font-medium truncate block max-w-[160px]"
+                              className="text-sm font-medium truncate block"
                               style={{ color: "var(--color-text-primary)" }}
                             >
                               {product.name ?? "—"}
@@ -651,7 +651,7 @@ export default function DashboardPage() {
             <SectionHeader title="Lopende campagnes" href="/campaigns" />
 
             <div
-              className="rounded-[16px] border overflow-hidden"
+              className="rounded-[16px] border overflow-x-auto"
               style={{
                 background: "var(--color-card)",
                 borderColor: "var(--color-border)",
@@ -659,7 +659,7 @@ export default function DashboardPage() {
               }}
             >
               {campaignsLoading ? (
-                <table className="w-full">
+                <table className="w-full min-w-[480px]">
                   <tbody>
                     {Array.from({ length: 4 }).map((_, i) => (
                       <SkeletonRow key={i} cells={5} widths={["w-40", "w-16", "w-16", "w-16", "w-12"]} />
@@ -673,7 +673,7 @@ export default function DashboardPage() {
                   description="Maak campagnes aan met status actief of scaling."
                 />
               ) : (
-                <table className="w-full">
+                <table className="w-full min-w-[480px]">
                   <thead>
                     <tr style={{ borderBottom: "1px solid var(--color-border)" }}>
                       {["Campagne", "Platform", "Status", "Spend", "ROAS"].map((h) => (
@@ -707,7 +707,7 @@ export default function DashboardPage() {
                           <td className="px-4 py-3">
                             <Link
                               href="/campaigns"
-                              className="text-sm font-medium hover:underline truncate block max-w-[150px]"
+                              className="text-sm font-medium hover:underline truncate block"
                               style={{ color: "var(--color-text-primary)" }}
                             >
                               {campaign.name}

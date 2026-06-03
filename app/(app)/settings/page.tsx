@@ -506,7 +506,7 @@ export default function SettingsPage() {
 
   return (
     <div className="flex flex-col h-full">
-      <div className="flex items-center px-8 py-5 flex-shrink-0" style={{ borderBottom: "1px solid var(--color-border)" }}>
+      <div className="flex items-center px-4 md:px-8 py-4 md:py-5 flex-shrink-0" style={{ borderBottom: "1px solid var(--color-border)" }}>
         <div>
           <h1 className="text-[24px] font-bold leading-tight" style={{ color: "var(--color-text-primary)" }}>
             Instellingen
@@ -517,7 +517,7 @@ export default function SettingsPage() {
         </div>
       </div>
 
-      <div className="flex-1 overflow-y-auto px-8 py-6 max-w-2xl w-full space-y-5">
+      <div className="flex-1 overflow-y-auto px-4 md:px-8 py-4 md:py-6 max-w-2xl w-full space-y-5">
 
         {/* Profile */}
         <Section title="Profiel">
