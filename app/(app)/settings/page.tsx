@@ -327,7 +327,7 @@ function IntegrationPanel({
                     </label>
                     <div className="relative">
                       <input
-                        type={field.secret && !showSecrets[field.key] ? "password" : "text"}
+                        type={('secret' in field && field.secret) && !showSecrets[field.key] ? "password" : "text"}
                         placeholder={field.placeholder}
                         value={values[field.key] ?? ""}
                         onChange={(e) => setValues((prev) => ({ ...prev, [field.key]: e.target.value }))}
@@ -341,7 +341,7 @@ function IntegrationPanel({
                         onFocus={(e) => { e.currentTarget.style.borderColor = "var(--color-accent)"; }}
                         onBlur={(e) => { e.currentTarget.style.borderColor = "var(--color-border)"; }}
                       />
-                      {field.secret && (
+                      {'secret' in field && field.secret && (
                         <button
                           type="button"
                           onClick={() => setShowSecrets((p) => ({ ...p, [field.key]: !p[field.key] }))}
