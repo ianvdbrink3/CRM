@@ -6,9 +6,9 @@ import { X } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 const WIDTH_MAP = {
-  sm: "w-[360px]",
-  md: "w-[480px]",
-  lg: "w-[640px]",
+  sm: "w-full sm:w-[360px]",
+  md: "w-full sm:w-[480px]",
+  lg: "w-full sm:w-[640px]",
 };
 
 interface SlideOverProps {
@@ -107,8 +107,8 @@ export function SlideOver({
                 aria-label="Sluiten"
                 className="flex items-center justify-center rounded-md transition-colors"
                 style={{
-                  width: 32,
-                  height: 32,
+                  width: 40,
+                  height: 40,
                   color: "var(--color-text-tertiary)",
                 }}
                 onMouseEnter={(e) =>

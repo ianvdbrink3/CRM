@@ -296,7 +296,7 @@ export default function DashboardPage() {
       {/* ── Page header ── */}
       <div>
         <h1
-          className="text-[28px] font-bold leading-tight"
+          className="text-[22px] md:text-[28px] font-bold leading-tight"
           style={{ color: "var(--color-text-primary)" }}
         >
           Command Center

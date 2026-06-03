@@ -69,7 +69,7 @@ export function MetricCard({
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.3, ease: [0.25, 0.1, 0.25, 1] }}
       className={cn(
-        "p-5 rounded-[16px] border relative overflow-hidden",
+        "p-3.5 sm:p-5 rounded-[16px] border relative overflow-hidden",
         className
       )}
       style={{
@@ -100,7 +100,7 @@ export function MetricCard({
       <p
         className="tabular-nums font-semibold leading-[1.1] mt-1"
         style={{
-          fontSize: "32px",
+          fontSize: "clamp(22px, 4vw, 32px)",
           color: "var(--color-text-primary)",
         }}
       >

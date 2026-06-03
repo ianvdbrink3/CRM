@@ -625,7 +625,7 @@ export default function TasksPage() {
         style={{ borderBottom: "1px solid var(--color-border)" }}
       >
         <div>
-          <h1 className="text-[24px] font-bold leading-tight" style={{ color: "var(--color-text-primary)" }}>
+          <h1 className="text-[20px] md:text-[24px] font-bold leading-tight" style={{ color: "var(--color-text-primary)" }}>
             Taken
           </h1>
           <p className="mt-0.5 text-sm" style={{ color: "var(--color-text-tertiary)" }}>
