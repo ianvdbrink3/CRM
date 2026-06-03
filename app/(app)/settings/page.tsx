@@ -336,7 +336,7 @@ function IntegrationPanel({
                           background: "var(--color-surface)",
                           border: "1px solid var(--color-border)",
                           color: "var(--color-text-primary)",
-                          paddingRight: field.secret ? 36 : undefined,
+                          paddingRight: ('secret' in field && field.secret) ? 36 : undefined,
                         }}
                         onFocus={(e) => { e.currentTarget.style.borderColor = "var(--color-accent)"; }}
                         onBlur={(e) => { e.currentTarget.style.borderColor = "var(--color-border)"; }}
